@@ -70,4 +70,21 @@ exports.login = (req, res, next) => {
     );
 };
 
-// TODO code delete user handler.
+
+
+
+exports.delete = (req, res, next) => {
+    User.destroy({
+        where: {
+            id: req.params.id
+        },
+    }).then(res.status(200).json({
+        message: 'User deleted successfully!'
+    })).catch(
+        (error) => {
+            res.status(500).json({
+                error: error
+            });
+        }
+    );
+};  
