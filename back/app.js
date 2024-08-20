@@ -19,8 +19,8 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 // app.use('/media', express.static(path.join(__dirname, 'media')));
 // TODO CODE POST ROUTE 
-// app.use('/api/post', postRoutes);
 app.use('/api/auth', userRoutes);
+
 
 module.exports = app;
 
