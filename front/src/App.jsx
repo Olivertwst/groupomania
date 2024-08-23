@@ -8,6 +8,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import Banner from './components/Banner.jsx';
 import Profile from './pages/Profile.jsx';
 
+// TODO DECLARE AND EXPORT A FUNCTION CALLED "isLoggedIn" AND WILL RETURN A TRUE/FALSE IF THE USESRS TOKEN IS IN LOCAL STORAGE
 const PrivateRoutes = () => {
   const auth = JSON.parse(localStorage.getItem('auth') || '{"token": false}');
 
@@ -16,19 +17,17 @@ const PrivateRoutes = () => {
 
 const App = () => {
   return (
-    <>
+    <Router>
       <Banner />
-      <Router>
-        <Routes>
-          <Route element={<PrivateRoutes />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-          </Route>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<LogIn />} />
-        </Routes>
-      </Router>
-    </>
+      <Routes>
+        <Route element={<PrivateRoutes />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<LogIn />} />
+      </Routes>
+    </Router>
   );
 }
 

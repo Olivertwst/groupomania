@@ -3,6 +3,10 @@
     height: 100px;
     width: 300px;
     object-fit: cover;
-    
+}
 
+nav a {
+    display:flex;
+    text-decoration: none;
+    margin-left: 88%;
 }

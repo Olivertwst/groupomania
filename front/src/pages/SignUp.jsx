@@ -1,15 +1,22 @@
-import axios from "axios"
-import { useState } from "react"
+// import '../styles/Signup.css';
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const [errorMessage, setError] = useState('')
+    const navigate = useNavigate();
 
     const handleSubmit = e => {
         // Prevent the default submit and page reload
         e.preventDefault()
+
+        // After successful signup:
+        // setSignedUp(true);
 
         // Handle validations
         axios
@@ -17,14 +24,19 @@ function Signup() {
             .then(response => {
                 console.log(response)
                 // Handle response
-                // TODO redirect user to Login
-                
+                navigate('/login'); // Redirect to login page
             })
-            // TODO ADD CATCH FOR ERRORS AND DISPLAY MESSAGE FOR USER. "IF ERROR (ERROR UNABLE TO LOGIN)"
+            .catch(error => {
+                setError ('ERROR UNABLE TO LOGIN')
+            });
+        // TODO ADD CATCH FOR ERRORS AND DISPLAY MESSAGE FOR USER. "IF ERROR (ERROR UNABLE TO LOGIN)"
     }
 
     return (
         <div>
+            {errorMessage && (
+                <p className="error"> {errorMessage} </p>
+            )}
             <form action="" id="signup" method="post" onSubmit={handleSubmit}>
                 <h1>Signup</h1>
                 <p className="item">
