@@ -11,8 +11,8 @@ function Banner() {
         <header>
             <nav>
                 <Link to="/">Home</Link>
-                <Link to="/signup">Signup</Link>
-                <Link to="/login">LogIn</Link>
+                {/* <Link to="/signup">Signup</Link> */}
+                {/* <Link to="/login">LogIn</Link> */}
                 <Link to="/profile">Profile</Link>
                 <Link to="/" onClick={handleClick}>Logout</Link>
                 {/* <i className="fa-solid fa-bars"></i> */}

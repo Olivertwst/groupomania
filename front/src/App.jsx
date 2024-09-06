@@ -9,11 +9,16 @@ import Banner from './components/Banner.jsx';
 import Profile from './pages/Profile.jsx';
 
 // TODO DECLARE AND EXPORT A FUNCTION CALLED "isLoggedIn" AND WILL RETURN A TRUE/FALSE IF THE USESRS TOKEN IS IN LOCAL STORAGE
-const PrivateRoutes = () => {
+export function isLoggedIn() {
   const auth = JSON.parse(localStorage.getItem('auth') || '{"token": false}');
+  return !!auth.token;
 
-  return auth.token ? <Outlet /> : <Navigate to="login" />;
-};
+}
+
+const PrivateRoutes = () => {
+  return (isLoggedIn() ? <Outlet /> : <Navigate to="login" />);
+}
+
 
 const App = () => {
   return (

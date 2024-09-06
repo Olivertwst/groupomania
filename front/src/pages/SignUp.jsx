@@ -27,9 +27,8 @@ function Signup() {
                 navigate('/login'); // Redirect to login page
             })
             .catch(error => {
-                setError ('ERROR UNABLE TO LOGIN')
+                setError('ERROR UNABLE TO LOGIN')
             });
-        // TODO ADD CATCH FOR ERRORS AND DISPLAY MESSAGE FOR USER. "IF ERROR (ERROR UNABLE TO LOGIN)"
     }
 
     return (
