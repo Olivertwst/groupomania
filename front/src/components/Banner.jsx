@@ -4,17 +4,19 @@ import { Link } from "react-router-dom";
 
 
 function Banner() {
-    function handleClick() {
+    function handleLogout() { 
+        // TODO clear out user info from localstorage
+        // TODO  redirect to login
         console.log('Link clicked!');
     }
     return (
         <header>
             <nav>
                 <Link to="/">Home</Link>
-                {/* <Link to="/signup">Signup</Link> */}
-                {/* <Link to="/login">LogIn</Link> */}
+                <Link to="/signup">Signup</Link>
+                <Link to="/login">LogIn</Link>
                 <Link to="/profile">Profile</Link>
-                <Link to="/" onClick={handleClick}>Logout</Link>
+                <Link to="/" onClick={handleLogout}>Logout</Link>
                 {/* <i className="fa-solid fa-bars"></i> */}
             </nav>
             <img src={logo} alt="logo" className="banner-image" />

@@ -29,7 +29,6 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-    //User.findOne({ where: { title: 'My Title' } });
     User.findOne({ where: { email: req.body.email } }).then(
         (user) => {
             if (!user) {
@@ -69,6 +68,8 @@ exports.login = (req, res, next) => {
         }
     );
 };
+
+
 
 
 
