@@ -2,25 +2,20 @@ import logo from '../assets/icon-left-font.png';
 import '../components/Banner.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
-// import { useState } from "react"
+import { useState } from "react"
 
 
 function Banner() {
     const navigate = useNavigate();
     function handleLogout() {
-        // TODO clear out user info from localstorage
-        localStorage.removeItem('token');
-        localStorage.removeItem('userId');
-        // TODO  redirect to login
-        console.log('Link clicked!');
+        localStorage.removeItem('auth');
+        navigate('/login');
     };
 
-    navigate('/login');
 
     return (
         <header>
             <nav>
-            {/* <nav className={`${components.banner}`}> */}
                 <Link to="/">Home</Link >
                 <Link to="/signup">Signup</Link>
                 <Link to="/login">LogIn</Link>

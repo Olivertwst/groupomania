@@ -18,6 +18,7 @@ function Login() {
             .then(response => {
                 // Handle response
                 localStorage.setItem('auth', JSON.stringify(response.data));
+                console.log('navigating');
                 navigate('/');
             }).catch(error => {
                 setError('Invalid Username and/or Password')

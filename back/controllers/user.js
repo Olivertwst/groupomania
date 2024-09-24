@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
 exports.signup = (req, res, next) => {
+    console.log('')
     bcrypt.hash(req.body.password, 10).then(
         (hash) => {
             const user = new User({
@@ -68,11 +69,6 @@ exports.login = (req, res, next) => {
         }
     );
 };
-
-
-
-
-
 
 exports.delete = (req, res, next) => {
     User.destroy({

@@ -8,13 +8,19 @@ import Banner from './components/Banner.jsx';
 import Profile from './pages/Profile.jsx';
 
 
-// TODO DECLARE AND EXPORT A FUNCTION CALLED "isLoggedIn" AND WILL RETURN A TRUE/FALSE IF THE USESRS TOKEN IS IN LOCAL STORAGE
 export function isLoggedIn() {
+  // FIXME use react hook for localStorage so when user logs out routes are still private
   const auth = JSON.parse(localStorage.getItem('auth') || '{"token": false}');
+  console.log(JSON.stringify(auth))
   return !!auth.token;
-
 }
 
+// const [logout, setLogout] = useState(() => {
+//   // getting stored value
+//   const saved = localStorage.getItem("auth");
+//   const initialValue = JSON.parse(saved);
+//   return initialValue || "";
+// });
 const PrivateRoutes = () => {
   return (isLoggedIn() ? <Outlet /> : <Navigate to="login" />);
 }
