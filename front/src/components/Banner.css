@@ -1,12 +1,17 @@
 .banner-image {
-    /* margin: 0 5px 0 0; */
-    height: 100px;
-    width: 300px;
+    height: 150px;
+    width: 350px;
     object-fit: cover;
 }
 
 nav a {
-    display:flex;
+    display: flex;
     text-decoration: none;
-    margin-left: 88%;
+    margin-left: 90%;
+    margin-bottom: 8px;
 }
+
+form {
+    margin-left: 5%;
+}
+

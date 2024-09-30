@@ -6,6 +6,7 @@ import LogIn from './pages/LogIn.jsx';
 import { Navigate, Outlet } from 'react-router-dom';
 import Banner from './components/Banner.jsx';
 import Profile from './pages/Profile.jsx';
+import { useEffect } from 'react';
 
 
 export function isLoggedIn() {

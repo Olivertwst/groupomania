@@ -1,0 +1,19 @@
+input {
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+button {
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+h2 {
+    color: Red;
+    border-style: ridge;
+}
+
+p {
+    color: red;
+    border-style: groove;
+}

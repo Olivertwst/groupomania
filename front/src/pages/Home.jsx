@@ -8,13 +8,33 @@ function Home() {
     const [content, setContent] = useState('')
     const [posts, setPosts] = useState([]);
     const navigate = useNavigate();
-    const [errorMessage, setErrorMessage] = useState('')
+    const [error, setError] = useState('')
+    const [userId, setUserId] = useState('');
+    const auth = JSON.parse(localStorage.getItem('auth'));
 
     useEffect(() => {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${auth.token}`
+            }
+        };
         console.log('getting posts')
         // TODO add use effect react hook to get the post information on the backend using axios
+        axios
+            .get("http://localhost:3000/api/posts/", config)
+            .then(response => {
+                // Handle response
+                console.log(response.data);
+                setPosts(response.data);
+                navigate('/');
+            }).catch(error => {
+                setError('ERROR HOMPAGE ERROR')
+            });
+        // const posts = () => {
+        //     const posts = () = 
+        // }
         // TODO use array.map method to insert the post cards inside of a loop
-    });
+    }, []);
 
     const handleSubmit = e => {
         // Prevent the default submit and page reload

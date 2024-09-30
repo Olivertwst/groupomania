@@ -11,8 +11,9 @@ exports.findAll = (req, res, next) => {
 
 exports.createPost = async (req, res, next) => {
     let post
-    console.log(req.body)
+    console.log(req.file)
     if (req.file) {
+      console.log(req.body)
       const parsedPost = JSON.parse(req.body.post);
       const url = req.protocol + '://' + req.get('host');
        post = Post.build({
@@ -24,6 +25,8 @@ exports.createPost = async (req, res, next) => {
       });
     } else {
         // FIXME get this to work for post without media
+        console.log(req.body)
+        const parsedPost = JSON.parse(req.body);
       post = {
         userId: parsedPost.userId,
         title: parsedPost.title,

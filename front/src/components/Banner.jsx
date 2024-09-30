@@ -3,10 +3,13 @@ import '../components/Banner.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { NavLink } from 'react-router-dom';
 
 
 function Banner() {
     const navigate = useNavigate();
+    const [nav, navBar] = useState()
+    
     function handleLogout() {
         localStorage.removeItem('auth');
         navigate('/login');
