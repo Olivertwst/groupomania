@@ -54,7 +54,7 @@ function Home() {
                 </form>
             </div>
             <div>
-                {posts.map(({ id, title, content }) =>
+                {posts.map(({ id, title, mediaUrl, content }) =>
                     <article key={id}>
                         <h2>{title}</h2>
                         <p>

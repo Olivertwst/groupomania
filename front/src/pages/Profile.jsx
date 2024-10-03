@@ -30,7 +30,7 @@ function Profile() {
 
     return (
         <div className='deleteUser'>
-            <h2>Delete</h2>
+            <h1>Delete</h1>
             <div>
                 <button onClick={handleSubmit}>Delete Profile</button>
             </div>

@@ -5,13 +5,16 @@
 }
 
 nav a {
-    display: flex;
+    flex-direction: row-reverse;
     text-decoration: none;
-    margin-left: 90%;
-    margin-bottom: 8px;
+    padding-right: 25px;
+    margin: 5%;
 }
+
+/* nav a.item {
+    
+} */
 
 form {
     margin-left: 5%;
 }
-
