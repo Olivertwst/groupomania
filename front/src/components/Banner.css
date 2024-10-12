@@ -2,6 +2,7 @@
     height: 150px;
     width: 350px;
     object-fit: cover;
+    color:black;
 }
 
 nav a {

@@ -4,23 +4,29 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { NavLink } from 'react-router-dom';
+import { isLoggedIn } from '../App';
 
 
 function Banner() {
     const navigate = useNavigate();
     const [nav, navBar] = useState()
-    
+
     function handleLogout() {
         localStorage.removeItem('auth');
-        navigate('/login');
+        // navigate('/login');
     };
 
-
+    // {unreadMessages.length > 0 &&
+    //     <h2>
+    //       You have {unreadMessages.length} unread messages.
+    //     </h2>
+    //   } 
+// TODO FINISH CONDITIONAL RENDERING LINKS BELOW  
     return (
         <header>
             <nav>
                 <Link to="/">Home</Link >
-                <Link to="/signup">Signup</Link>
+                {!isLoggedIn() && <Link to="/signup">Signup</Link>}
                 <Link to="/login">LogIn</Link>
                 <Link to="/profile">Profile</Link>
                 <Link to="/" onClick={handleLogout}>Logout</Link>
@@ -30,7 +36,5 @@ function Banner() {
         </header>
     )
 }
-// TODO ADD LOGO AND NAVIGTION MENU
-// USE react router to allow users to click menu links and to go to other pages.  
 
 export default Banner;

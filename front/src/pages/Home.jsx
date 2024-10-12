@@ -19,7 +19,7 @@ function Home() {
             }
         };
         console.log('getting posts')
-        // TODO add use effect react hook to get the post information on the backend using axios
+
         axios
             .get("http://localhost:3000/api/posts/", config)
             .then(response => {
@@ -30,17 +30,14 @@ function Home() {
             }).catch(error => {
                 setError('ERROR HOMPAGE ERROR')
             });
-        // const posts = () => {
-        //     const posts = () = 
-        // }
-        // TODO use array.map method to insert the post cards inside of a loop
     }, []);
 
     const handleSubmit = e => {
         // Prevent the default submit and page reload
         e.preventDefault()
     };
-
+// TODO CONDITIONALLY RENDER MEDIA IF PRESENT AND UPDATE TO SHOW VIDEO AND AUDIO
+// (NOTE) IF MEDIAurl IS TRUTHY THERE'S A MEDIA  TO DISPLAY IF THE MEDIA OR URL ENDS IN JPEG OR PNG ENDING. MP3-AUDIO MP4-VIDEO
     return (
         <>
             <div>
@@ -57,6 +54,7 @@ function Home() {
                 {posts.map(({ id, title, mediaUrl, content }) =>
                     <article key={id}>
                         <h2>{title}</h2>
+                        <img src={mediaUrl} alt={title} />
                         <p>
                             {content}
                         </p>
