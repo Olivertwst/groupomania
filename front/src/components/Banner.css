@@ -2,7 +2,7 @@
     height: 150px;
     width: 350px;
     object-fit: cover;
-    color:black;
+    color-scheme: darkred
 }
 
 nav a {
@@ -11,10 +11,6 @@ nav a {
     padding-right: 25px;
     margin: 5%;
 }
-
-/* nav a.item {
-    
-} */
 
 form {
     margin-left: 5%;

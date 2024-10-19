@@ -36,28 +36,33 @@ function Home() {
         // Prevent the default submit and page reload
         e.preventDefault()
     };
-// TODO CONDITIONALLY RENDER MEDIA IF PRESENT AND UPDATE TO SHOW VIDEO AND AUDIO
-// (NOTE) IF MEDIAurl IS TRUTHY THERE'S A MEDIA  TO DISPLAY IF THE MEDIA OR URL ENDS IN JPEG OR PNG ENDING. MP3-AUDIO MP4-VIDEO
+    // TODO CONDITIONALLY RENDER MEDIA IF PRESENT AND UPDATE TO SHOW VIDEO AND AUDIO
+    // (NOTE) IF MEDIAurl IS TRUTHY THERE'S A MEDIA  TO DISPLAY IF THE MEDIA OR URL ENDS IN JPEG OR PNG ENDING. MP3-AUDIO MP4-VIDEO
+    // {!isLoggedIn() && <Link to="/signup">Signup</Link>}
+    // TODO finish <form> for creating a post.
+    // TODO style post feed so the info is grouped together like project 5-6 "truncate post message so user can click and see more and marked as read"
+    // TODO make post cards clickable 
     return (
         <>
-            <div>
+            <div> 
+                
                 <form action="" id="home" method="get">
-                    <h1>Home</h1>
                     <p className="item">
                     </p>
                     <p className="item">
-                        <input type="submit" value="Home" />
                     </p>
                 </form>
             </div>
             <div>
                 {posts.map(({ id, title, mediaUrl, content }) =>
                     <article key={id}>
-                        <h2>{title}</h2>
-                        <img src={mediaUrl} alt={title} />
-                        <p>
+                        {<h2>{title}</h2>}
+                        {<p>
                             {content}
-                        </p>
+                        </p>}
+                        {mediaUrl?.includes(".mp4") && <source src="movie.mp4" type="video/mp4" />}
+
+                        {mediaUrl?.includes(".mp3") && <source src="audio.mp3" type="audio/mp3" />}
                     </article>
                 )}
             </div>

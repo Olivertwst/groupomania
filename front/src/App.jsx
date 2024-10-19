@@ -11,12 +11,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { useState } from "react";
 
-export function isLoggedIn() {
-  // FIXME use react hook for localStorage so when user logs out routes are still private
-  const auth = JSON.parse(localStorage.getItem('auth') || '{"token": false}');
-  console.log(JSON.stringify(auth))
-  return !!auth.token;
-}
+// export function isLoggedIn() {
+//   // FIXME use react hook for localStorage so when user logs out routes are still private
+
+//   // const auth = JSON.parse(localStorage.getItem('auth') || '{"token": false}');
+//   console.log(JSON.stringify(auth))
+//   return auth.token;
+// }
 
 // const [logout, setLogout] = useState(() => {
 //   // getting stored value
@@ -25,16 +26,26 @@ export function isLoggedIn() {
 //   return initialValue || "";
 // });
 const PrivateRoutes = () => {
-  return (isLoggedIn() ? <Outlet /> : <Navigate to="login" />);
+  const [auth, setAuth] = useState(() => {
+    const storedAuth = localStorage.getItem('auth');
+    if (storedAuth) {
+      return JSON.parse(storedAuth);
+    }
+    return '{"token": false}';
+  });
+  // const token =(localStorage.getItem('token')) || false;
+  return (auth.token ? <Outlet /> : <Navigate to="login" />);
 }
 
 
 const App = () => {
+  // TODO ADD ROUTE FOR POST DETAILS PAGE 
   return (
     <Router>
       <Banner />
       <Routes>
         <Route element={<PrivateRoutes />}>
+          <Route path="posts/:id" element={<Post />} />
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
         </Route>
