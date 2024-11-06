@@ -1,15 +1,12 @@
+import React, { useState } from "react";
+import { Navigate, Outlet, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Banner from './components/Banner';
+import Home from './pages/Home';
+import LogIn from './pages/LogIn';
+import Post  from "./pages/Post";
+import Profile from './pages/Profile';
+import Signup from './pages/SignUp';
 import './styles/App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home.jsx';
-import Signup from './pages/SignUp.jsx';
-import LogIn from './pages/LogIn.jsx';
-import { Navigate, Outlet } from 'react-router-dom';
-import Banner from './components/Banner.jsx';
-import Profile from './pages/Profile.jsx';
-import { useEffect } from 'react';
-import React from "react";
-import ReactDOM from "react-dom";
-import { useState } from "react";
 
 // export function isLoggedIn() {
 //   // FIXME use react hook for localStorage so when user logs out routes are still private
