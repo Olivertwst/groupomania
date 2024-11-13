@@ -44,8 +44,8 @@ function Home() {
     // TODO make post cards clickable 
     return (
         <>
-            <div> 
-                
+            <div>
+
                 <form action="" id="home" method="get">
                     <p className="item">
                     </p>
@@ -60,9 +60,11 @@ function Home() {
                         {<p>
                             {content}
                         </p>}
+                        {<source src="movie.mp4" type="video/mp4"></source>}
                         {mediaUrl?.includes(".mp4") && <source src="movie.mp4" type="video/mp4" />}
 
-                        {mediaUrl?.includes(".mp3") && <source src="audio.mp3" type="audio/mp3" />}
+                        {<source src="audio.mp3" type="audio/mp3"></source>}
+                        {/* {mediaUrl?.includes(".mp3") && <source src="audio.mp3" type="audio/mp3" />} */}
                     </article>
                 )}
             </div>

@@ -30,6 +30,7 @@ exports.createPost = async (req, res, next) => {
     });
   }
 
+
   post.save().then(
     () => {
       res.status(201).json({
@@ -44,4 +45,23 @@ exports.createPost = async (req, res, next) => {
     }
   );
 }
- // TODO ADD HANDLER CODE FORGETING POST FOR GIVEN ID JUST LIKE IN PJ6 FOR GETTIN ONE POST
+
+exports.findOne = (req, res, next) => {
+  Post.findOne({
+    where: {
+      id: req.params.id
+    }
+  }).then(
+    (post) => {
+      res.status(200).json(post);
+    }
+  ).catch(
+    (error) => {
+      res.status(404).json({
+        error: error
+      });
+    }
+  );
+};
+
+// TODO ADD HANDLER CODE FORGETING POST FOR GIVEN ID JUST LIKE IN PJ6 FOR GETTIN ONE POST

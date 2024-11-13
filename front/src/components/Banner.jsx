@@ -23,7 +23,8 @@ function Banner() {
         localStorage.removeItem('auth');
         console.log('loggingOut')
         //FIXME NAVIGATE NOT WORKING
-        navigate('/');
+        // localStorage.clear();
+        navigate('LogIn');
     };
     // FIXME conditional rendering link (logout)
     return (
