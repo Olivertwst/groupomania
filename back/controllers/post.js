@@ -63,5 +63,3 @@ exports.findOne = (req, res, next) => {
     }
   );
 };
-
-// TODO ADD HANDLER CODE FORGETING POST FOR GIVEN ID JUST LIKE IN PJ6 FOR GETTIN ONE POST

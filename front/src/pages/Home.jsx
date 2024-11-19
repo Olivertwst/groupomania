@@ -2,6 +2,17 @@ import '../styles/Home.css';
 import axios from "axios";
 import { useState, useReact, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Banner from '../components/Banner';
+import * as React from "react";
+import {
+    BrowserRouter as Router,
+    Link,
+    Route,
+    Routes,
+    useParams,
+} from "react-router-dom";
+
+import { getPost, getPosts } from "./Post";
 
 function Home() {
     const [title, setTitle] = useState('')
@@ -11,11 +22,12 @@ function Home() {
     const [error, setError] = useState('')
     const [userId, setUserId] = useState('');
     const auth = JSON.parse(localStorage.getItem('auth'));
+    const { id } = useParams();
 
     useEffect(() => {
         const config = {
             headers: {
-                Authorization: `Bearer ${auth.token}`
+                Authorization: `Bearer ${auth?.token}`
             }
         };
         console.log('getting posts')
@@ -44,6 +56,7 @@ function Home() {
     // TODO make post cards clickable 
     return (
         <>
+            <Banner />
             <div>
 
                 <form action="" id="home" method="get">
@@ -51,20 +64,28 @@ function Home() {
                     </p>
                     <p className="item">
                     </p>
+                    {/* <a href="" */}
                 </form>
             </div>
             <div>
                 {posts.map(({ id, title, mediaUrl, content }) =>
                     <article key={id}>
                         {<h2>{title}</h2>}
+                        <img id="myImg" src={mediaUrl} alt={mediaUrl} width="304" height="228"></img>
+                        {mediaUrl?.includes(".mp4") &&
+                            <video width="320" height="240" controls>
+                                <source src={mediaUrl} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>}
                         {<p>
                             {content}
                         </p>}
-                        {<source src="movie.mp4" type="video/mp4"></source>}
-                        {mediaUrl?.includes(".mp4") && <source src="movie.mp4" type="video/mp4" />}
-
-                        {<source src="audio.mp3" type="audio/mp3"></source>}
-                        {/* {mediaUrl?.includes(".mp3") && <source src="audio.mp3" type="audio/mp3" />} */}
+                        {mediaUrl?.includes(".mp3") &&
+                            <audio controls>
+                                <source src={mediaUrl} type="audio/mpeg" />
+                                Your browser does not support the audio tag.
+                            </audio>
+                        }
                     </article>
                 )}
             </div>
