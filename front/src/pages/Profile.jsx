@@ -1,10 +1,19 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import * as React from "react";
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes,
+    Link,
+} from "react-router-dom";
 
 function Profile() {
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('')
+    const { handle } = useParams()
 
     const handleSubmit = e => {
         // Prevent the default submit and page reload
@@ -32,6 +41,15 @@ function Profile() {
         <div className='deleteUser'>
             <h1>Delete</h1>
             <div>
+                <nav>
+                    <ul>
+                        {/* {posts.map (({ id, title }) => (
+                            <li key={id}>
+                                 <Link to={`blog/${id}`}>{title}</Link>
+                            </li>
+                        ))} */}
+                    </ul>
+                </nav>
                 <button onClick={handleSubmit}>Delete Profile</button>
             </div>
         </div>

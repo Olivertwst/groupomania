@@ -48,12 +48,7 @@ function Home() {
         // Prevent the default submit and page reload
         e.preventDefault()
     };
-    // TODO CONDITIONALLY RENDER MEDIA IF PRESENT AND UPDATE TO SHOW VIDEO AND AUDIO
-    // (NOTE*) IF MEDIAurl IS TRUTHY THERE'S A MEDIA  TO DISPLAY IF THE MEDIA OR URL ENDS IN JPEG OR PNG ENDING. MP3-AUDIO MP4-VIDEO
-    // {!isLoggedIn() && <Link to="/signup">Signup</Link>}
-    // TODO finish <form> for creating a post.
-    // TODO style post feed so the info is grouped together like project 5-6 "truncate post message so user can click and see more and marked as read"
-    // TODO make post cards clickable 
+    
     return (
         <>
             <Banner />
