@@ -74,13 +74,14 @@ exports.delete = (req, res, next) => {
         where: {
             id: req.params.id
         },
-    }).then(res.status(200).json({
-        message: 'User deleted successfully!'
-    })).catch(
-        (error) => {
-            res.status(500).json({
-                error: error
-            });
-        }
-    );
+    }).then(
+        res.status(200).json({
+            message: 'User deleted successfully!'
+        })).catch(
+            (error) => {
+                res.status(500).json({
+                    error: error
+                });
+            }
+        );
 };  

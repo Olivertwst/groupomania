@@ -1,23 +1,61 @@
 input {
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 50px;
+    margin-right: 1%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+article {
+    text-decoration: none;
+    border-radius: 50px;
+    margin: auto;
 }
 
 button {
     text-decoration: none;
     border-radius: 10px;
+    margin-top: 38px;
+    margin-left: 38px;
+    width: 105px;
+
 }
 
 h2 {
-    color: rgb(102, 238, 238);
+    color: black rgb(102, 238, 238);
+    text-overflow: ellipsis;
 }
 
 p {
     color: red;
+    text-overflow: ellipsis;
 }
 
-img{
-    height: 325px;
-   display: flex;
-   justify-content: flex-start;
+img {
+    height: 320px;
+    width: 280px;
+    border-radius: 15px;
+}
+
+div {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    gap: 25px;
+}
+
+html {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+form {
+    /* margin: auto; */
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: 125px;
 }

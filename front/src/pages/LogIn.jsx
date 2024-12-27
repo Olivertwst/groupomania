@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom"
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [errorMessage, setError] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate();
 
     const handleSubmit = e => {
-        // Prevent the default submit and page reload
+         // Prevent the default submit and page reload
         e.preventDefault()
 
         // Handle validations
@@ -21,7 +21,7 @@ function Login() {
                 console.log('navigating');
                 navigate('/');
             }).catch(error => {
-                setError('Invalid Username and/or Password')
+                setErrorMessage('Invalid Username and/or Password')
             });
     }
 

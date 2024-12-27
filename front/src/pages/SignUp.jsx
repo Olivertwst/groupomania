@@ -8,7 +8,7 @@ function Signup() {
     const [lastName, setLastName] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-    const [errorMessage, setError] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate();
 
     const handleSubmit = e => {
@@ -27,7 +27,7 @@ function Signup() {
                 navigate('/login'); // Redirect to login page
             })
             .catch(error => {
-                setError('ERROR UNABLE TO LOGIN')
+                setErrorMessage('ERROR UNABLE TO LOGIN')
             });
     }
 

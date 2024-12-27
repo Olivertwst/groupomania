@@ -36,18 +36,17 @@ const PrivateRoutes = () => {
 
 const App = () => {
   return (
-    <Router>
-      {/* <Banner /> */}
-      <Routes>
-        <Route element={<PrivateRoutes />}>
-          <Route path="/posts/:id" element={<Post />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-        </Route>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<LogIn />} />
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          <Route element={<PrivateRoutes />}>
+            <Route path="/posts/:id" element={<Post />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<LogIn />} />
+        </Routes>
+      </Router>
   );
 }
 

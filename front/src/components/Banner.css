@@ -1,17 +1,16 @@
 .banner-image {
     height: 150px;
-    width: 350px;
+    /* width: 350px; */
+    padding-right: 25px;
     object-fit: cover;
-    color-scheme: darkred
+    color-scheme: darkred;
+    margin: auto;
 }
 
 nav a {
     flex-direction: row-reverse;
     text-decoration: none;
     padding-right: 25px;
-    margin: 5%;
-}
-
-form {
-    margin-left: 5%;
+    margin: auto;
+    margin-left: 1%;
 }
