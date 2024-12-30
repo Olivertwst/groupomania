@@ -14,7 +14,6 @@ function Post() {
     const [errorMessage, setErrorMessage] = useState('');
     const { id } = useParams();
     const [mediaUrl, setMediaUrl] = useState('');
-    const url = `http://localhost:3000/api/posts/${id}`;
 
     useEffect(() => {
         const auth = JSON.parse(localStorage.getItem('auth'));
@@ -27,15 +26,15 @@ function Post() {
         // console.log(config)
         // http://localhost:3000/api/posts/1
         axios
-            .get(`http://localhost:3000/api/posts/${id}`, config)
+            .get(`http://localhost:3000/api/posts${id}`, config)
             .then((response) => {
                 const post = response.data
                 setContent(post.content)
-                console.log(content)
                 setMediaUrl(post.mediaUrl)
                 setTitle(post.title)
                 setUserId(post.id)
                 setErrorMessage(post.errorMessage)
+                console.log(response)
 
                 //TODO set the state variables above from the post in the response.
             })
@@ -43,19 +42,24 @@ function Post() {
 
         console.log(config)
         console.log(auth)
+        console.log(content)
+
         axios
-            .post(`http://localhost:3000/api/posts/${auth.userId.post}`, config)
+            .post(`http://localhost:3000/api/posts${auth.userId}`, config)
             .then((response) => {
                 const post = response.data
                 setContent(post.content)
                 console.log(content)
                 setMediaUrl(post.mediaUrl)
                 setTitle(post.title)
-                setUserId(post.id)
+                setUserId(post.userId)
                 setErrorMessage(post.errorMessage)
+                console.log(response)
                 //TODO set the state variables above from the post in the response.
             })
-            .catch((err) => alert("File Upload Error"));
+            .catch((err) => {
+                alert("File Upload Error");
+            });
         //TODO use axios to call the backend marking the post as read
 
 

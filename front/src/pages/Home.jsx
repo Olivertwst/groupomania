@@ -34,7 +34,7 @@ function Home() {
         console.log('getting posts')
 
         axios
-            .get("http://localhost:3000/api/posts/", config)
+            .get("http://localhost:3000/api/posts", config)
             .then(response => {
                 // Handle response
                 console.log(response.data);
@@ -47,7 +47,7 @@ function Home() {
 
     function handleSubmit(event) {
         event.preventDefault()
-        const post = {};
+        const post = {title,content,post};
         //TODO declare post variable that contains the JSON string with the post information (check in thunderClient)
         const url = 'http://localhost:3000/api/posts';
         const auth = JSON.parse(localStorage.getItem('auth'));
@@ -96,7 +96,7 @@ function Home() {
 
                 {posts.map(({ id, title, mediaUrl, content }) =>
                     <article key={id}>
-                        <h2 className='title'><Link to={`/posts/${id}`}>{title}</Link></h2>
+                        <h2 className='title'><Link to={`/posts/${userId}`}>{title}</Link></h2>
                         {mediaUrl?.includes(".jpg") || mediaUrl?.includes(".png") &&
                             <img id="myImg" src={mediaUrl} alt={mediaUrl} width="320" height="240"></img>}
                         {mediaUrl?.includes(".mp4") &&
