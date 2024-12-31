@@ -24,6 +24,7 @@ function Home() {
     const auth = JSON.parse(localStorage.getItem('auth'));
     const link = document.createElement('a');
     const [selectedFile, setSelectedFile] = useState(null);
+    const [mediaUrl, setMediaUrl] = useState('');
 
     useEffect(() => {
         const config = {
@@ -37,7 +38,7 @@ function Home() {
             .get("http://localhost:3000/api/posts", config)
             .then(response => {
                 // Handle response
-                console.log(response.data);
+                console.log(response.data)
                 setPosts(response.data);
                 navigate('/');
             }).catch(error => {
@@ -47,7 +48,7 @@ function Home() {
 
     function handleSubmit(event) {
         event.preventDefault()
-        const post = {title,content,post};
+        const post = { title, content,mediaUrl };
         //TODO declare post variable that contains the JSON string with the post information (check in thunderClient)
         const url = 'http://localhost:3000/api/posts';
         const auth = JSON.parse(localStorage.getItem('auth'));
@@ -92,6 +93,7 @@ function Home() {
                         />
                         <button type="submit">Add Post</button>
                     </form>
+                    {errorMessage && <p>{errorMessage}</p>}
                 </div>
 
                 {posts.map(({ id, title, mediaUrl, content }) =>

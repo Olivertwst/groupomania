@@ -26,10 +26,11 @@ function Post() {
         // console.log(config)
         // http://localhost:3000/api/posts/1
         axios
-            .get(`http://localhost:3000/api/posts${id}`, config)
+            .get(`http://localhost:3000/api/posts${id.title.mediaUrl.content}`, config)
             .then((response) => {
                 const post = response.data
                 setContent(post.content)
+                console.log(content)
                 setMediaUrl(post.mediaUrl)
                 setTitle(post.title)
                 setUserId(post.id)
@@ -45,7 +46,7 @@ function Post() {
         console.log(content)
 
         axios
-            .post(`http://localhost:3000/api/posts${auth.userId}`, config)
+            .post(`http://localhost:3000/api/posts${auth.userId.content.mediaUrl.title}`, config)
             .then((response) => {
                 const post = response.data
                 setContent(post.content)

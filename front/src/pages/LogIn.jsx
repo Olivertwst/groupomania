@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Banner from "../components/Banner"
 
 function Login() {
     const [email, setEmail] = useState('')
@@ -9,7 +10,7 @@ function Login() {
     const navigate = useNavigate();
 
     const handleSubmit = e => {
-         // Prevent the default submit and page reload
+        // Prevent the default submit and page reload
         e.preventDefault()
 
         // Handle validations
@@ -26,25 +27,28 @@ function Login() {
     }
 
     return (
-        <div>
-            {errorMessage && (
-                <p className="error"> {errorMessage} </p>
-            )}
-            <form action="" id="login" method="post" onSubmit={handleSubmit}>
-                <h1>Login</h1>
-                <p className="item">
-                    <label htmlFor="email"> Email </label>
-                    <input type="email" name="email" id="email" onChange={e => setEmail(e.target.value)} value={email} />
-                </p>
-                <p className="item">
-                    <label htmlFor="password"> Password </label>
-                    <input type="password" name="password" id="password" onChange={e => setPassword(e.target.value)} value={password} />
-                </p>
-                <p className="item">
-                    <input type="submit" value="Login" />
-                </p>
-            </form>
-        </div>
+        <>
+            <Banner />
+            <div>
+                {errorMessage && (
+                    <p className="error"> {errorMessage} </p>
+                )}
+                <form action="" id="login" method="post" onSubmit={handleSubmit}>
+                    <h1>Login</h1>
+                    <p className="item">
+                        <label htmlFor="email"> Email </label>
+                        <input type="email" name="email" id="email" onChange={e => setEmail(e.target.value)} value={email} />
+                    </p>
+                    <p className="item">
+                        <label htmlFor="password"> Password </label>
+                        <input type="password" name="password" id="password" onChange={e => setPassword(e.target.value)} value={password} />
+                    </p>
+                    <p className="item">
+                        <input type="submit" value="Login" />
+                    </p>
+                </form>
+            </div>
+        </>
     )
 }
 
