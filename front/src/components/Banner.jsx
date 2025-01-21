@@ -25,18 +25,18 @@ function Banner() {
         // localStorage.clear();
         // navigate('LogIn');
     };
-    
+
     return (
-        <header>
-            <nav>
-                {auth && <Link to="/">Home</Link >}
-                {!auth && <Link to="/signup">Signup</Link>}
-                {!auth && <Link to="/login">LogIn</Link>}
-                {auth && <Link to="/profile">Profile</Link>}
-                {auth && <Link to="/login" onClick={handleLogout}>Logout</Link>}
-            </nav>
-            <img src={logo} alt="logo" className="banner-image" />
-        </header>
+            <header>
+                <nav>
+                    {auth && <Link to="/">Home</Link >}
+                    {!auth && <Link to="/signup">Signup</Link>}
+                    {!auth && <Link to="/login">LogIn</Link>}
+                    {auth && <Link to="/profile">Profile</Link>}
+                    {auth && <Link to="/login" onClick={handleLogout}>Logout</Link>}
+                </nav>
+                <img src={logo} alt="logo" className="banner-image" />
+            </header>
     )
 }
 

@@ -19,7 +19,7 @@ exports.createPost = async (req, res, next) => {
       userId: parsedPost.userId,
       title: parsedPost.title,
       content: parsedPost.content,
-      usersRead: [],
+      userReads: [],
       mediaUrl: url + '/media/' + req.file.filename,
     });
   } else {
@@ -41,7 +41,7 @@ exports.createPost = async (req, res, next) => {
   ).catch(
     (error) => {
       res.status(400).json({
-        error: error
+        error: error.message
       });
     }
   );
@@ -59,17 +59,17 @@ exports.findOne = (req, res, next) => {
   ).catch(
     (error) => {
       res.status(404).json({
-        error: error
+        error: error.message
       });
     }
   );
 };
 
 exports.postRead = (req, res, next) => {
-    const { id } = req.params;
-    const { userId } = req.body;
+  const { id } = req.params;
+  const { userId } = req.body;
 
-    Post.findOne({ where: { id } })
+  Post.findOne({ where: { id } })
     .then((post) => {
       if (!post) {
         // If post not found, return an error response
@@ -79,7 +79,7 @@ exports.postRead = (req, res, next) => {
       }
 
       // Check if userID is already in the reads array
-      if (post.reads && post.reads.includes(userId)) {
+      if (post.userReads && post.userReads.includes(userId)) {
         // If userID already exists, do nothing and return a message
         return res.status(200).json({
           message: 'User has already read this post',
@@ -87,22 +87,21 @@ exports.postRead = (req, res, next) => {
       }
 
       // If userID is not in the reads array, add it
-      post.reads.push(userId);
+      post.userReads = [...post.userReads, userId];
+      // jane.role = [...jane.role, 'admin'];
 
-     
-      return post.save();
-    })
-    .then(() => {
-      // After saving, send a success response
-      res.status(200).json({
-        message: 'Post marked as read!',
+      post.save().then(() => {
+        // After saving, send a success response
+        res.status(200).json({
+          message: 'Post marked as read!',
+        });
       });
     })
-    .catch((error) => {
-      // Handle errors, e.g., database errors
-      console.error(error);
-      res.status(400).json({
-        error: error.message,
-      });
-    });
+    .catch(
+      (error) => {
+        res.status(400).json({
+          error: error.message
+        });
+      }
+    );
 };
